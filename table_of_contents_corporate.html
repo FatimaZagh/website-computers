@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table of Contents - Corporate Style</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: #f5f7fa;
+            padding: 30px;
+            color: #2c3e50;
+        }
+
+        .document-container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .header p {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .toc-section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1e3c72;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #e74c3c;
+            padding-bottom: 5px;
+        }
+
+        .toc-item {
+            display: grid;
+            grid-template-columns: 40px 1fr 60px;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #ecf0f1;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .toc-item:hover {
+            background: #f8f9fa;
+            padding-left: 15px;
+            border-left: 4px solid #1e3c72;
+        }
+
+        .toc-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-number {
+            font-weight: bold;
+            color: #1e3c72;
+            font-size: 1.1rem;
+        }
+
+        .item-title {
+            font-size: 1rem;
+            color: #2c3e50;
+            font-weight: 500;
+        }
+
+        .item-page {
+            text-align: right;
+            font-weight: bold;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+        }
+
+        .abstract-item {
+            background: #f8f9fa;
+            border-left: 4px solid #e74c3c;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+
+        .abstract-item .item-title {
+            font-style: italic;
+            color: #e74c3c;
+        }
+
+        .footer {
+            background: #34495e;
+            color: white;
+            padding: 20px 30px;
+            text-align: center;
+            font-size: 0.9rem;
+        }
+
+        /* Icons for sections */
+        .item-number::before {
+            content: '📄';
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .toc-item[data-section="intro"] .item-number::before { content: '🏠'; }
+        .toc-item[data-section="requirements"] .item-number::before { content: '📋'; }
+        .toc-item[data-section="tools"] .item-number::before { content: '🛠️'; }
+        .toc-item[data-section="database"] .item-number::before { content: '🗄️'; }
+        .toc-item[data-section="gui"] .item-number::before { content: '🖥️'; }
+        .toc-item[data-section="enhancements"] .item-number::before { content: '🆕'; }
+        .toc-item[data-section="conclusion"] .item-number::before { content: '📝'; }
+        .toc-item[data-section="references"] .item-number::before { content: '📚'; }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .document-container { box-shadow: none; border: 1px solid #ddd; }
+            .header { background: #1e3c72 !important; }
+        }
+
+        @media (max-width: 768px) {
+            .content { padding: 20px; }
+            .header { padding: 30px 20px; }
+            .header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="document-container">
+        <div class="header">
+            <h1>Table of Contents</h1>
+            <p>Computer Garage E-Commerce Platform Project Report</p>
+        </div>
+
+        <div class="content">
+            <div class="toc-section">
+                <div class="section-title">Preliminary</div>
+                <div class="abstract-item">
+                    <div class="toc-item">
+                        <span class="item-number">—</span>
+                        <span class="item-title">Abstract</span>
+                        <span class="item-page">ii</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toc-section">
+                <div class="section-title">Main Content</div>
+                
+                <div class="toc-item" data-section="intro">
+                    <span class="item-number">1</span>
+                    <span class="item-title">Introduction</span>
+                    <span class="item-page">1</span>
+                </div>
+
+                <div class="toc-item" data-section="requirements">
+                    <span class="item-number">2</span>
+                    <span class="item-title">Project Requirements</span>
+                    <span class="item-page">3</span>
+                </div>
+
+                <div class="toc-item" data-section="tools">
+                    <span class="item-number">3</span>
+                    <span class="item-title">Tools and Technologies Used</span>
+                    <span class="item-page">6</span>
+                </div>
+
+                <div class="toc-item" data-section="database">
+                    <span class="item-number">4</span>
+                    <span class="item-title">Project Database Design (EER/UML)</span>
+                    <span class="item-page">10</span>
+                </div>
+
+                <div class="toc-item" data-section="gui">
+                    <span class="item-number">5</span>
+                    <span class="item-title">GUI Discussion - Main Interfaces and Features</span>
+                    <span class="item-page">15</span>
+                </div>
+
+                <div class="toc-item" data-section="enhancements">
+                    <span class="item-number">6</span>
+                    <span class="item-title">Recent Enhancements and New Features</span>
+                    <span class="item-page">22</span>
+                </div>
+
+                <div class="toc-item" data-section="conclusion">
+                    <span class="item-number">7</span>
+                    <span class="item-title">Conclusion</span>
+                    <span class="item-page">28</span>
+                </div>
+
+                <div class="toc-item" data-section="references">
+                    <span class="item-number">8</span>
+                    <span class="item-title">References</span>
+                    <span class="item-page">30</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Computer Garage Project • Academic Year 2024 • Final Report
+        </div>
+    </div>
+</body>
+</html>

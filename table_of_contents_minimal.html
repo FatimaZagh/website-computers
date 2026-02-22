@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table of Contents - Minimal Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            background: #fafafa;
+            padding: 40px 20px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 60px 50px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 2rem;
+            font-weight: normal;
+            margin-bottom: 50px;
+            color: #2c3e50;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+        }
+
+        .title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 2px;
+            background: #2c3e50;
+            margin: 20px auto;
+        }
+
+        .toc-entry {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 20px;
+            padding: 8px 0;
+            border-bottom: 1px solid #ecf0f1;
+            transition: all 0.3s ease;
+        }
+
+        .toc-entry:hover {
+            background: #f8f9fa;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+        .toc-entry.abstract {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+
+        .toc-number {
+            font-weight: bold;
+            color: #34495e;
+            margin-right: 15px;
+            min-width: 25px;
+        }
+
+        .toc-title {
+            flex: 1;
+            font-size: 1.1rem;
+        }
+
+        .toc-page {
+            font-weight: bold;
+            color: #7f8c8d;
+            margin-left: 15px;
+        }
+
+        .dots {
+            flex: 1;
+            border-bottom: 1px dotted #bdc3c7;
+            margin: 0 15px;
+            height: 1px;
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .container { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Contents</h1>
+        
+        <div class="toc-entry abstract">
+            <span class="toc-number">—</span>
+            <span class="toc-title">Abstract</span>
+            <span class="dots"></span>
+            <span class="toc-page">ii</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">1</span>
+            <span class="toc-title">Introduction</span>
+            <span class="dots"></span>
+            <span class="toc-page">1</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">2</span>
+            <span class="toc-title">Project Requirements</span>
+            <span class="dots"></span>
+            <span class="toc-page">3</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">3</span>
+            <span class="toc-title">Tools and Technologies Used</span>
+            <span class="dots"></span>
+            <span class="toc-page">6</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">4</span>
+            <span class="toc-title">Project Database Design (EER/UML)</span>
+            <span class="dots"></span>
+            <span class="toc-page">10</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">5</span>
+            <span class="toc-title">GUI Discussion - Main Interfaces and Features</span>
+            <span class="dots"></span>
+            <span class="toc-page">15</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">6</span>
+            <span class="toc-title">Recent Enhancements and New Features</span>
+            <span class="dots"></span>
+            <span class="toc-page">22</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">7</span>
+            <span class="toc-title">Conclusion</span>
+            <span class="dots"></span>
+            <span class="toc-page">28</span>
+        </div>
+
+        <div class="toc-entry">
+            <span class="toc-number">8</span>
+            <span class="toc-title">References</span>
+            <span class="dots"></span>
+            <span class="toc-page">30</span>
+        </div>
+    </div>
+</body>
+</html>

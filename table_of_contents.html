@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Computer Garage Project - Table of Contents</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .toc-container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 800px;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toc-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #f5576c);
+        }
+
+        .toc-header {
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .toc-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #2d3748;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        .toc-subtitle {
+            font-size: 1.1rem;
+            color: #718096;
+            font-weight: 400;
+        }
+
+        .toc-list {
+            list-style: none;
+        }
+
+        .toc-item {
+            margin-bottom: 15px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .toc-item:hover {
+            transform: translateX(10px);
+        }
+
+        .toc-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            text-decoration: none;
+            color: #2d3748;
+            background: #f7fafc;
+            border-radius: 12px;
+            border-left: 4px solid transparent;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .toc-link::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.6s;
+        }
+
+        .toc-link:hover::before {
+            left: 100%;
+        }
+
+        .toc-link:hover {
+            background: white;
+            border-left-color: #667eea;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.15);
+            color: #1a202c;
+        }
+
+        .toc-number {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #667eea;
+            margin-right: 15px;
+            min-width: 30px;
+        }
+
+        .toc-text {
+            flex: 1;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .toc-page {
+            font-weight: 600;
+            color: #718096;
+            font-size: 1rem;
+        }
+
+        .toc-dots {
+            flex: 1;
+            border-bottom: 2px dotted #e2e8f0;
+            margin: 0 15px;
+            height: 1px;
+        }
+
+        /* Special styling for main sections */
+        .toc-item.main-section .toc-link {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            font-weight: 600;
+        }
+
+        .toc-item.main-section .toc-number,
+        .toc-item.main-section .toc-page {
+            color: white;
+        }
+
+        .toc-item.main-section .toc-dots {
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .toc-item.main-section:hover .toc-link {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.3);
+        }
+
+        /* Abstract styling */
+        .toc-item.abstract .toc-link {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            color: white;
+            font-style: italic;
+        }
+
+        .toc-item.abstract .toc-number,
+        .toc-item.abstract .toc-page {
+            color: white;
+        }
+
+        .toc-item.abstract .toc-dots {
+            border-bottom-color: rgba(255, 255, 255, 0.3);
+        }
+
+        /* Footer */
+        .toc-footer {
+            margin-top: 40px;
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #e2e8f0;
+            color: #718096;
+            font-size: 0.9rem;
+        }
+
+        /* Print styles */
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .toc-container {
+                box-shadow: none;
+                border: 1px solid #ccc;
+                border-radius: 0;
+            }
+            
+            .toc-container::before {
+                display: none;
+            }
+            
+            .toc-link:hover::before {
+                display: none;
+            }
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .toc-container {
+                padding: 20px;
+                margin: 10px;
+            }
+            
+            .toc-title {
+                font-size: 2rem;
+            }
+            
+            .toc-link {
+                padding: 12px 15px;
+            }
+            
+            .toc-text {
+                font-size: 1rem;
+            }
+        }
+
+        /* Animation for page load */
+        .toc-item {
+            opacity: 0;
+            animation: slideInUp 0.6s ease forwards;
+        }
+
+        .toc-item:nth-child(1) { animation-delay: 0.1s; }
+        .toc-item:nth-child(2) { animation-delay: 0.2s; }
+        .toc-item:nth-child(3) { animation-delay: 0.3s; }
+        .toc-item:nth-child(4) { animation-delay: 0.4s; }
+        .toc-item:nth-child(5) { animation-delay: 0.5s; }
+        .toc-item:nth-child(6) { animation-delay: 0.6s; }
+        .toc-item:nth-child(7) { animation-delay: 0.7s; }
+        .toc-item:nth-child(8) { animation-delay: 0.8s; }
+        .toc-item:nth-child(9) { animation-delay: 0.9s; }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="toc-container">
+        <div class="toc-header">
+            <h1 class="toc-title">Table of Contents</h1>
+            <p class="toc-subtitle">Computer Garage E-Commerce Platform - Project Report</p>
+        </div>
+
+        <ul class="toc-list">
+            <li class="toc-item abstract">
+                <a href="#abstract" class="toc-link">
+                    <span class="toc-number">—</span>
+                    <span class="toc-text">Abstract</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">ii</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#introduction" class="toc-link">
+                    <span class="toc-number">1.</span>
+                    <span class="toc-text">Introduction</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">1</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#requirements" class="toc-link">
+                    <span class="toc-number">2.</span>
+                    <span class="toc-text">Project Requirements</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">3</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#tools" class="toc-link">
+                    <span class="toc-number">3.</span>
+                    <span class="toc-text">Tools and Technologies Used</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">6</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#database" class="toc-link">
+                    <span class="toc-number">4.</span>
+                    <span class="toc-text">Project Database Design (EER/UML)</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">10</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#gui" class="toc-link">
+                    <span class="toc-number">5.</span>
+                    <span class="toc-text">GUI Discussion - Main Interfaces and Features</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">15</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#enhancements" class="toc-link">
+                    <span class="toc-number">6.</span>
+                    <span class="toc-text">Recent Enhancements and New Features</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">22</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#conclusion" class="toc-link">
+                    <span class="toc-number">7.</span>
+                    <span class="toc-text">Conclusion</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">28</span>
+                </a>
+            </li>
+
+            <li class="toc-item main-section">
+                <a href="#references" class="toc-link">
+                    <span class="toc-number">8.</span>
+                    <span class="toc-text">References</span>
+                    <span class="toc-dots"></span>
+                    <span class="toc-page">30</span>
+                </a>
+            </li>
+        </ul>
+
+        <div class="toc-footer">
+            <p>Computer Garage Project Report • 2024</p>
+        </div>
+    </div>
+</body>
+</html>
